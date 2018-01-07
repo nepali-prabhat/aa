@@ -4,15 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class path_find {
+	
 	public static moves_container move = new moves_container();
 	/**
-	 * 
 	 * @param array: array of this instance
 	 * @param col: the column of starting point
 	 * @param row: the row of the starting point
 	 * @return 
 	 */
 	public static int find_path(int[][] array, int col, int row) {
+		/**
+		 * @param temp_array: all  the changes in array is done in temp_array
+		 */
 		int[][] temp_array = array;
 		int actual_column = temp_array[0].length;
 		System.out.println(col);
@@ -22,41 +25,42 @@ public class path_find {
 		System.out.println(value);
 		int return_value = 0;
 		if(col==0 && row == 0 && value == 1) {
-			return 1;
+			return_value = 1;
+			return return_value;			
 		}else if(value == 0) {
-			return 0;
+			return_value = 0;
+			return return_value;
 		}else if(value == 1) {
 			temp_array[row][col]=0;
 			if(col+1<actual_column) {
 				return_value = find_path(temp_array,col+1,row);
-//				System.out.println(return_value);
-				switch(return_value) {
-//				case(0):	return 0;
-				case(1): System.out.println("R");move.add_move("R"); 
+				switch(return_value){
+				case(0):	return 0;
+				case(1): move.add_move("R"); break;
 				}
 			}
 			if(col-1>=0) {
 				return_value = find_path(temp_array,col-1,row);
 				switch(return_value) {
-//				case(0):	return 0; 
-				case(1):  System.out.println("L");move.add_move("L") ;
+				case(0):	return 0; 
+				case(1): move.add_move("L") ; break;
 				}
 			}
 			if(row+1<actual_rows) {
 				return_value = find_path(temp_array,col,row+1);
 				switch(return_value) {
-//				case(0):	return 0;
-				case(1):  System.out.println("U");move.add_move("U");
+				case(0):	return 0;
+				case(1):  System.out.println("U"); move.add_move("U"); break;
 				}
 			}
 			if(row-1>=0) {
 				return_value = find_path(temp_array,col,row-1);
 				switch(return_value) {
-//				case(0):	return 0;
-				case(1):  System.out.println("D");move.add_move("D");
+				case(0):	return 0;
+				case(1):  System.out.println("D");move.add_move("D"); break;
 				}
 			}
 		}
-		return return_value;
+		return 1;
 	}
 }
