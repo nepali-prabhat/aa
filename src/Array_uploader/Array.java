@@ -1,13 +1,10 @@
 package Array_uploader;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
-public class Array_main {
-
-	public static int[][] Array() {
-		/**
+public class Array {
+	private int array[][];
+	
+      public Array(){
+    	/**
 		 * @param col: number of columns
 		 * @param row: number of rows
 		 */
@@ -43,7 +40,7 @@ public class Array_main {
 				"000010100010001000000000000010001000001" + 
 				"111111101111111111101111111110111110111";
 			char[] a = value.toCharArray();
-			int array[][] = new int[row][col];
+			this.array = new int[row][col];
 			int f = a[0];
 			/**
 			 * adds the corresponding 0s and 1s in array[][]
@@ -58,15 +55,34 @@ public class Array_main {
 			/**
 			 * to display the array uncomment the statements bellow
 			 */
-//			for(int i =0; i<row;i++) {
-//				for(int j = 0; j<col;j++) {
-//					System.out.print(array[i][j]);
-//				}
-//				System.out.println();
-//			}
-			return array;
-		
-		
-	}
-
+			for(int i =0; i<row;i++) {
+				for(int j = 0; j<col;j++) {
+					System.out.print(array[i][j]);
+				}
+				System.out.println();
+			}		
+    	
+    }
+    /**
+     * 
+     * @return array made
+     */
+    public int[][] get_array(){
+    	return this.array;
+    }
+    /**
+     * 
+     * @return column of array made
+     */
+    public int get_array_column() {
+    	return this.array[0].length;
+    }
+    /**
+     * 
+     * @return row of array made
+     */
+    public int get_array_row() {
+    	return this.array.length;
+    }
+    
 }
